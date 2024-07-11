@@ -1,5 +1,5 @@
 <script>
-    export let names
+	export let names;
 </script>
 
 <div
@@ -19,15 +19,38 @@
 				<div class="flex items-center space-x-4">
 					<div class="flex">
 						<p class="font-medium pt-1 leading-none">{user.name}</p>
-						<p class="font-medium pl-5 text-gray-500 pt-0">{user.email}</p>                        
+						<p class="font-medium pl-5 text-gray-500 pt-0">
+							{user.email}
+						</p>
 					</div>
 				</div>
-                <form method="POST" action="/profiles?/delete">
-                <input type="hidden" name="id" id="id" value={user.id}>
-                <button type="submit">
-                    <img class="w-4 float-right" src="./trash-can.svg" alt="delete"/>
-                </button>
-                </form>
+				<!-- Update form -->
+				<form method="POST" action="/profiles?/update">
+					<input
+						type="text"
+						name="name"
+						id="name"
+						value={user.name}
+					/>
+					<input
+						type="email"
+						name="update_email"
+						id="update_email"
+						value={user.email}
+					/>
+					<input type="hidden" name="id" id="id" value={user.id} />
+					<button type="submit">Update</button>
+				</form>
+				<form method="POST" action="/profiles?/delete">
+					<!-- the below is delete button with trash can -->
+					<button type="submit">
+						<img
+							class="w-4 float-right"
+							src="./trash-can.svg"
+							alt="delete"
+						/>
+					</button>
+				</form>
 			</div>
 		{/each}
 	</div>
